@@ -1,0 +1,23 @@
+<jc = 'http://www.atos.net/jahia-certification/jc/1.0'>
+<jcmix = 'http://www.atos.net/jahia-certification/jcmix/1.0'>
+<jmix = 'http://www.jahia.org/jahia/mix/1.0'>
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+
+[jcmix:jcComponents] > jmix:droppableContent, jmix:editorialContent mixin
+
+[jc:restaurant] > jnt:content, jcmix:jcComponents
+ - name (string) mandatory internationalized
+ - address (string) internationalized
+ - phone (string)
+ - email (string) < '^$|[A-Za-z0-9._%+-]+@(?:[A-Za-z0-9-]+\\.)+[A-Za-z]{2,}'
+ - photos (weakreference, picker[type='image']) multiple
+ - price (string)
+ - food_type (string) internationalized
+ - description (string, richtext) internationalized
+
+[jc:latestRestaurant] > jnt:content, jcmix:jcComponents, jmix:list
+ - maxRestaurant (long) = '3' autocreated indexed=no
+ - subNodesView (string, choicelist[templates='jc:restaurant',resourceBundle]) = 'default' autocreated
+
+[jc:restaurantSearch] > jnt:content, jcmix:jcComponents
+
